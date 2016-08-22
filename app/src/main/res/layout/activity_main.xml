@@ -15,5 +15,7 @@
         android:layout_height="match_parent"
         android:id="@+id/listNews"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="@dimen/dividerHeight"/>
 </RelativeLayout>

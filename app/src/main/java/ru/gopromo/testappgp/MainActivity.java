@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements LentaView {
         setContentView(R.layout.activity_main);
 
         mListView = (ListView) findViewById(R.id.listNews);
-        mPresenter = new LentaPresenterImpl(getFragmentManager(), this);
+        mPresenter = new LentaPresenterImpl(this, getFragmentManager(), this);
         mNewsListAdapter = new NewsListAdapter(this, mNewsListData,
                 R.layout.newslist_item_list, mPresenter);
         mListView.setAdapter(mNewsListAdapter);
@@ -62,8 +62,8 @@ public class MainActivity extends AppCompatActivity implements LentaView {
     @Override
     public void onLentaNewsUpdated(List<Item> aNews) {
         if (aNews != null) {
-            if (aNews.size() > 0) {
-                mNewsListData.clear();
+            mNewsListData.clear();
+            if (!aNews.isEmpty()) {
                 mNewsListData.addAll(aNews);
                 mNewsListAdapter.notifyDataSetChanged();
             }

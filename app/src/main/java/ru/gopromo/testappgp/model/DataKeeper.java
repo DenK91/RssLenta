@@ -40,6 +40,9 @@ public class DataKeeper extends Fragment implements LentaModel {
     private List<Item> mWorldNewsList = new ArrayList<>();
     private List<Item> mScienceNewsList = new ArrayList<>();
 
+    /**
+     * for debug only.
+     */
     private static int mRCallCounter = 0;
     private static int mWCallCounter = 0;
     private static int mSCallCounter = 0;
@@ -100,7 +103,14 @@ public class DataKeeper extends Fragment implements LentaModel {
         }
     }
 
+    /**
+     * Detect new item on server.
+     *
+     * @param aNewsType type of news
+     * @return true if news on server was updated.
+     */
     private boolean hasFreshNews(int aNewsType) {
+        //TODO: implement this method.
         switch (aNewsType) {
             case R.id.russia:
                 return mRCallCounter++ < 1;

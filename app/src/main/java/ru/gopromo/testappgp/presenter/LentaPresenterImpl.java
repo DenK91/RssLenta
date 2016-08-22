@@ -1,11 +1,12 @@
 package ru.gopromo.testappgp.presenter;
 
 import android.app.FragmentManager;
-import android.util.Log;
+import android.content.Context;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
 
+import ru.gopromo.testappgp.NewsActivity;
 import ru.gopromo.testappgp.data_model.Item;
 import ru.gopromo.testappgp.model.DataKeeper;
 import ru.gopromo.testappgp.model.LentaModel;
@@ -18,13 +19,17 @@ public class LentaPresenterImpl implements LentaPresenter {
 
     private LentaModel mDataKeeper;
     private WeakReference<LentaView> mLentaView;
+    private Context mContext;
 
     /**
      * Constructor.
      *
+     * @param aContext {@link Context}.
      * @param aFragmentManager {@link FragmentManager}.
+     * @param aView {@link LentaView}.
      */
-    public LentaPresenterImpl(FragmentManager aFragmentManager, LentaView aView) {
+    public LentaPresenterImpl(Context aContext, FragmentManager aFragmentManager, LentaView aView) {
+        mContext = aContext;
         mDataKeeper = DataKeeper.getInstance(aFragmentManager);
         mLentaView = new WeakReference<>(aView);
     }
@@ -44,6 +49,6 @@ public class LentaPresenterImpl implements LentaPresenter {
 
     @Override
     public void onItemClicked(Item aItem) {
-        Log.d("denk", "cleck:" + aItem.getLink());
+        NewsActivity.startNewsView(mContext, aItem);
     }
 }

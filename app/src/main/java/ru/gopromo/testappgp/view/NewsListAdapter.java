@@ -13,17 +13,26 @@ import ru.gopromo.testappgp.R;
 import ru.gopromo.testappgp.data_model.Item;
 import ru.gopromo.testappgp.presenter.LentaPresenter;
 
+/**
+ * List adapter for news.
+ */
 public class NewsListAdapter extends ArrayAdapter<Item> {
 
     private LayoutInflater mInflater;
-    private int mLayoutRes;
     private LentaPresenter mPresenter;
 
+    /**
+     * Constructor.
+     *
+     * @param aContext {@link Context}.
+     * @param aData list items.
+     * @param aLayoutRes layout id.
+     * @param aPresenter {@link LentaPresenter}.
+     */
     public NewsListAdapter(Context aContext, List<Item> aData,
                            int aLayoutRes, LentaPresenter aPresenter) {
         super(aContext, aLayoutRes, aData);
         mPresenter = aPresenter;
-        mLayoutRes = aLayoutRes;
         mInflater = (LayoutInflater) aContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -31,9 +40,9 @@ public class NewsListAdapter extends ArrayAdapter<Item> {
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
         if (view == null) {
-            view = mInflater.inflate(mLayoutRes, parent, false);
+            view = mInflater.inflate(R.layout.newslist_item_list, parent, false);
 
-            TrackViewHolder newsViewHolder = new TrackViewHolder();
+            NewsViewHolder newsViewHolder = new NewsViewHolder();
 
             newsViewHolder.titleNews = (TextView) view.findViewById(R.id.news_title);
             newsViewHolder.descriptionNews = (TextView) view.findViewById(R.id.news_description);
@@ -41,7 +50,7 @@ public class NewsListAdapter extends ArrayAdapter<Item> {
             view.setTag(newsViewHolder);
         }
 
-        TrackViewHolder viewHolder = (TrackViewHolder) view.getTag();
+        NewsViewHolder viewHolder = (NewsViewHolder) view.getTag();
 
         final Item currentNews = getItem(position);
 
@@ -58,7 +67,10 @@ public class NewsListAdapter extends ArrayAdapter<Item> {
         return view;
     }
 
-    static class TrackViewHolder {
+    /**
+     * View holder.
+     */
+    static class NewsViewHolder {
         TextView titleNews;
         TextView descriptionNews;
     }
