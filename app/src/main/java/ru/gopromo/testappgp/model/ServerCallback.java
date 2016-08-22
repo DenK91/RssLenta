@@ -35,13 +35,13 @@ public class ServerCallback implements Callback<Rss> {
     public void onResponse(Call<Rss> aCall, Response<Rss> aResponse) {
         if (mPresenter != null) {
             List<Item> news = aResponse.body().getChannel().getItems();
-            mPresenter.onListNewsUpdated(news);
+            mPresenter.onNewsUpdated(news);
             mModel.saveDataNewsModel(news, mNewsType);
         }
     }
 
     @Override
     public void onFailure(Call<Rss> aCall, Throwable aT) {
-        mPresenter.onListNewsUpdated(null);
+        mPresenter.onNewsUpdated(null);
     }
 }

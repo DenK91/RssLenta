@@ -6,8 +6,10 @@ import ru.gopromo.testappgp.data_model.Item;
 
 public interface LentaPresenter {
 
-    void updateListNews(int aNewsType);
+    void newsSelected(int aNewsType);
 
-    void onListNewsUpdated(List<Item> aNews);
+    void onNewsUpdated(List<Item> aNews);
+
+    void onItemClicked(Item aItem);
 
 }

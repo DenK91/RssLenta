@@ -5,7 +5,6 @@ import android.app.FragmentManager;
 import android.os.Bundle;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import retrofit2.Call;
@@ -59,7 +58,7 @@ public class DataKeeper extends Fragment implements LentaModel {
                 call.enqueue(new ServerCallback(aPresenter, this, aNewsType));
             }
         } else {
-            aPresenter.onListNewsUpdated(getNewsListByType(aNewsType));
+            aPresenter.onNewsUpdated(getNewsListByType(aNewsType));
         }
     }
 
@@ -113,5 +112,4 @@ public class DataKeeper extends Fragment implements LentaModel {
                 return true;
         }
     }
-
 }
