@@ -1,8 +1,8 @@
-package ru.gopromo.testappgp;
+package ru.gopromo.testappgp.view;
 
 import java.util.List;
 
-import ru.gopromo.testappgp.model.Item;
+import ru.gopromo.testappgp.data_model.Item;
 
 public interface LentaView {
 

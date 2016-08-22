@@ -6,6 +6,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
+import ru.gopromo.testappgp.presenter.LentaPresenter;
+import ru.gopromo.testappgp.presenter.LentaPresenterImpl;
+import ru.gopromo.testappgp.view.LentaViewImpl;
+
+/**
+ * Main activity.
+ */
 public class MainActivity extends AppCompatActivity {
 
     private LentaPresenter mPresenter;
@@ -21,16 +28,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy() {
-        mPresenter.onDestroy();
-        super.onDestroy();
-    }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu aMenu) {
         getMenuInflater().inflate(R.menu.main_menu, aMenu);
         MenuItem table = aMenu.findItem(R.id.russia);
         table.setChecked(true);
+        mPresenter.updateListNews(R.id.russia);
         return true;
     }
 

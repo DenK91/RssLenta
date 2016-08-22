@@ -1,4 +1,4 @@
-package ru.gopromo.testappgp.model;
+package ru.gopromo.testappgp.data_model;
 
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
