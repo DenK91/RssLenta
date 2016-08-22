@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TestAppGP</string>
+
+    <string name="menu_item_russia_title">Russian news</string>
+    <string name="menu_item_world_title">World news</string>
+    <string name="menu_item_science_title">Science news</string>
 </resources>

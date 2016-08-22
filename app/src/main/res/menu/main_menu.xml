@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/russia"
+            android:title="@string/menu_item_russia_title" />
+        <item android:id="@+id/world"
+            android:title="@string/menu_item_world_title" />
+        <item android:id="@+id/science"
+              android:title="@string/menu_item_science_title" />
+    </group>
+</menu>
