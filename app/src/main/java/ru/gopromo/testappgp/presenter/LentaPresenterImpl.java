@@ -98,7 +98,6 @@ public class LentaPresenterImpl implements LentaPresenter {
             text.setVisibility(View.VISIBLE);
             list.setVisibility(View.GONE);
         }
-
     }
 
     @Override
