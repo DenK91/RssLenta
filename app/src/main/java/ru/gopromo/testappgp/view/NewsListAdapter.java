@@ -37,29 +37,29 @@ public class NewsListAdapter extends ArrayAdapter<Item> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View view = convertView;
+    public View getView(int aPosition, View aConvertView, ViewGroup aParent) {
+        View view = aConvertView;
         if (view == null) {
-            view = mInflater.inflate(R.layout.newslist_item_list, parent, false);
+            view = mInflater.inflate(R.layout.newslist_item_list, aParent, false);
 
             NewsViewHolder newsViewHolder = new NewsViewHolder();
 
-            newsViewHolder.titleNews = (TextView) view.findViewById(R.id.news_title);
-            newsViewHolder.descriptionNews = (TextView) view.findViewById(R.id.news_description);
+            newsViewHolder.mTitleNews = (TextView) view.findViewById(R.id.news_title);
+            newsViewHolder.mDescriptionNews = (TextView) view.findViewById(R.id.news_description);
 
             view.setTag(newsViewHolder);
         }
 
         NewsViewHolder viewHolder = (NewsViewHolder) view.getTag();
 
-        final Item currentNews = getItem(position);
+        final Item currentNews = getItem(aPosition);
 
-        viewHolder.titleNews.setText(currentNews.getTitle());
-        viewHolder.descriptionNews.setText(currentNews.getDescription());
+        viewHolder.mTitleNews.setText(currentNews.getTitle());
+        viewHolder.mDescriptionNews.setText(currentNews.getDescription());
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View aView) {
                 mPresenter.onItemClicked(currentNews);
             }
         });
@@ -71,7 +71,7 @@ public class NewsListAdapter extends ArrayAdapter<Item> {
      * View holder.
      */
     static class NewsViewHolder {
-        TextView titleNews;
-        TextView descriptionNews;
+        TextView mTitleNews;
+        TextView mDescriptionNews;
     }
 }

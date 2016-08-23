@@ -43,9 +43,9 @@ public class DataKeeper extends Fragment implements LentaModel {
     /**
      * for debug only.
      */
-    private static int mRCallCounter = 0;
-    private static int mWCallCounter = 0;
-    private static int mSCallCounter = 0;
+    private static int sRCallCounter = 0;
+    private static int sWCallCounter = 0;
+    private static int sSCallCounter = 0;
 
     @Override
     public void onCreate(Bundle aSavedInstanceState) {
@@ -113,11 +113,11 @@ public class DataKeeper extends Fragment implements LentaModel {
         //TODO: implement this method.
         switch (aNewsType) {
             case R.id.russia:
-                return mRCallCounter++ < 1;
+                return sRCallCounter++ < 1;
             case R.id.world:
-                return mWCallCounter++ < 1;
+                return sWCallCounter++ < 1;
             case R.id.science:
-                return mSCallCounter++ < 1;
+                return sSCallCounter++ < 1;
             default:
                 return true;
         }

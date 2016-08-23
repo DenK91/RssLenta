@@ -8,11 +8,20 @@ import android.util.Log;
 
 import ru.gopromo.testappgp.data_model.Item;
 
+/**
+ * Activity for showing news item.
+ */
 public class NewsActivity extends AppCompatActivity {
 
     private static final String TAG = "denk";
-    public static String KEY_ITEM_BUNDLE = "itemBundleKey";
+    private static final String KEY_ITEM_BUNDLE = "itemBundleKey";
 
+    /**
+     * Start activity for show news item.
+     *
+     * @param aContext {@link Context}.
+     * @param aItem {@link Item} to show.
+     */
     public static void startNewsView(Context aContext, Item aItem) {
         Intent startNewsIntent = new Intent(aContext, NewsActivity.class);
         startNewsIntent.putExtra(NewsActivity.KEY_ITEM_BUNDLE, aItem.linkToBundle());
@@ -20,8 +29,8 @@ public class NewsActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle aSavedInstanceState) {
+        super.onCreate(aSavedInstanceState);
         setContentView(R.layout.activity_news);
 
         String link = Item.getLinkFromBundle(getIntent().getBundleExtra(KEY_ITEM_BUNDLE));
