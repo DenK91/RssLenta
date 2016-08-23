@@ -4,4 +4,5 @@
     <string name="menu_item_russia_title">Russian news</string>
     <string name="menu_item_world_title">World news</string>
     <string name="menu_item_science_title">Science news</string>
+    <string name="error_list_is_empty">Empty List.</string>
 </resources>

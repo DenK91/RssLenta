@@ -5,15 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import ru.gopromo.testappgp.data_model.Item;
 import ru.gopromo.testappgp.presenter.LentaPresenter;
 import ru.gopromo.testappgp.presenter.LentaPresenterImpl;
 import ru.gopromo.testappgp.view.LentaView;
-import ru.gopromo.testappgp.view.NewsListAdapter;
+import ru.gopromo.testappgp.view.ViewContainer;
 
 /**
  * Main activity.
@@ -21,20 +18,17 @@ import ru.gopromo.testappgp.view.NewsListAdapter;
 public class MainActivity extends AppCompatActivity implements LentaView {
 
     private LentaPresenter mPresenter;
-    private List<Item> mNewsListData = new ArrayList<>();
-    private NewsListAdapter mNewsListAdapter;
-    private ListView mListView;
+    private ViewContainer mMainActivityView;
 
     @Override
     protected void onCreate(Bundle aSavedInstanceState) {
         super.onCreate(aSavedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mListView = (ListView) findViewById(R.id.listNews);
+        mMainActivityView = new ViewContainer(
+                (ListView) findViewById(R.id.listNews),
+                (TextView) findViewById(R.id.errorTextView));
         mPresenter = new LentaPresenterImpl(this, getFragmentManager(), this);
-        mNewsListAdapter = new NewsListAdapter(this, mNewsListData,
-                R.layout.newslist_item_list, mPresenter);
-        mListView.setAdapter(mNewsListAdapter);
     }
 
     @Override
@@ -60,13 +54,13 @@ public class MainActivity extends AppCompatActivity implements LentaView {
     }
 
     @Override
-    public void onLentaNewsUpdated(List<Item> aNews) {
-        if (aNews != null) {
-            mNewsListData.clear();
-            if (!aNews.isEmpty()) {
-                mNewsListData.addAll(aNews);
-                mNewsListAdapter.notifyDataSetChanged();
-            }
-        }
+    public ViewContainer getViewContainer() {
+        return mMainActivityView;
+    }
+
+    @Override
+    protected void onDestroy() {
+        mPresenter.onDestroy(this);
+        super.onDestroy();
     }
 }

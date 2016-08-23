@@ -37,7 +37,7 @@ public class NewsListAdapter extends ArrayAdapter<Item> {
     }
 
     @Override
-    public View getView(int aPosition, View aConvertView, ViewGroup aParent) {
+    public View getView(final int aPosition, View aConvertView, ViewGroup aParent) {
         View view = aConvertView;
         if (view == null) {
             view = mInflater.inflate(R.layout.newslist_item_list, aParent, false);
@@ -52,7 +52,7 @@ public class NewsListAdapter extends ArrayAdapter<Item> {
 
         NewsViewHolder viewHolder = (NewsViewHolder) view.getTag();
 
-        final Item currentNews = getItem(aPosition);
+        Item currentNews = getItem(aPosition);
 
         viewHolder.mTitleNews.setText(currentNews.getTitle());
         viewHolder.mDescriptionNews.setText(currentNews.getDescription());
@@ -60,7 +60,7 @@ public class NewsListAdapter extends ArrayAdapter<Item> {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View aView) {
-                mPresenter.onItemClicked(currentNews);
+                mPresenter.onItemClicked(aPosition);
             }
         });
 

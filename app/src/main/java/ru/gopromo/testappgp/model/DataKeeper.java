@@ -43,6 +43,7 @@ public class DataKeeper extends Fragment implements LentaModel {
     /**
      * for debug only.
      */
+    private static boolean DEBUG_MOD = false;
     private static int sRCallCounter = 0;
     private static int sWCallCounter = 0;
     private static int sSCallCounter = 0;
@@ -110,16 +111,20 @@ public class DataKeeper extends Fragment implements LentaModel {
      * @return true if news on server was updated.
      */
     private boolean hasFreshNews(int aNewsType) {
-        //TODO: implement this method.
-        switch (aNewsType) {
-            case R.id.russia:
-                return sRCallCounter++ < 1;
-            case R.id.world:
-                return sWCallCounter++ < 1;
-            case R.id.science:
-                return sSCallCounter++ < 1;
-            default:
-                return true;
+        if (DEBUG_MOD) {
+            switch (aNewsType) {
+                case R.id.russia:
+                    return sRCallCounter++ < 1;
+                case R.id.world:
+                    return sWCallCounter++ < 1;
+                case R.id.science:
+                    return sSCallCounter++ < 1;
+                default:
+                    return true;
+            }
+        } else {
+            //TODO: implement this method.
+            return true;
         }
     }
 }

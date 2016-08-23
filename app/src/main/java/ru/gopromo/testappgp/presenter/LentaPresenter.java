@@ -1,5 +1,7 @@
 package ru.gopromo.testappgp.presenter;
 
+import android.content.Context;
+
 import java.util.List;
 
 import ru.gopromo.testappgp.data_model.Item;
@@ -26,8 +28,15 @@ public interface LentaPresenter {
     /**
      * Callback will be called when item in view was clicked.
      *
-     * @param aItem item on which the clicked
+     * @param aPosition item position on which was clicked.
      */
-    void onItemClicked(Item aItem);
+    void onItemClicked(int aPosition);
+
+    /**
+     * Callback will be called when view was destroyed.
+     *
+     * @param aContext {@link Context}.
+     */
+    void onDestroy(Context aContext);
 
 }
